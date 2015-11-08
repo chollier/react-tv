@@ -1,8 +1,10 @@
 import { createStore, applyMiddleware, compose } from "redux";
 import thunk from "redux-thunk";
 import reducer from "./reducers/"
+import createLogger from "redux-logger";
 
-let middleware = [thunk];
+const logger = createLogger();
+let middleware = [thunk, logger];
 let finalCreateStore;
 
 if (process.env.NODE_ENV === "production") {
