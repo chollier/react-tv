@@ -30,10 +30,10 @@ export function loadPlaylistFromFile(file) {
   };
 }
 
-export function playlistLoadedFromFile(m3u) {
+export function playlistLoadedFromFile(playlist) {
   return {
     type: PLAYLIST_LOADED_FROM_FILE,
-    m3u
+    playlist
   };
 }
 
