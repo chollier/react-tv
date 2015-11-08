@@ -1,12 +1,46 @@
+import m3u8 from "m3u8";
+import fileReaderStream from "filereader-stream";
+
 import {
   SELECT_CHANNEL,
-  LOAD_PLAYLIST
+  LOADING_PLAYLIST_FROM_FILE,
+  PLAYLIST_LOADED_FROM_FILE,
+  PLAYLIST_LOAD_ERROR
 } from "../constants/actionTypes"
 
-export function loadPlaylist(m3u) {
+// this action return a function and not an object,
+// this is thanks to https://github.com/gaearon/redux-thunk
+export function loadPlaylistFromFile(file) {
+
+  return (dispatch) => {
+
+    // First we dispatch that we are loading a playlist
+    dispatch({type: LOADING_PLAYLIST_FROM_FILE});
+
+    // then we start parsing the file
+    const parser = m3u8.createStream();
+    fileReaderStream(file).pipe(parser);
+
+    // If we succeed, then we dispatch playlistLoadedFromFile
+    parser.on("m3u", (m3u) => dispatch(playlistLoadedFromFile(m3u)))
+
+    // If not we dispatch playlistLoadError with the error
+    parser.on("error", (error) => dispatch(playlistLoadError(error)))
+
+  };
+}
+
+export function playlistLoadedFromFile(m3u) {
   return {
-    type: LOAD_PLAYLIST,
-    playlist: m3u
+    type: PLAYLIST_LOADED_FROM_FILE,
+    m3u
+  };
+}
+
+export function playlistLoadError(error) {
+  return {
+    type: PLAYLIST_LOAD_ERROR,
+    error
   };
 }
 

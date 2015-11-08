@@ -5,8 +5,6 @@ import * as channelActions from "../../actions/channelActions";
 import Radium from "radium";
 import Channel from "../channels/Channel";
 import Dropzone from "react-dropzone";
-import m3u8 from "m3u8";
-import fileReaderStream from "filereader-stream";
 
 @Radium
 class ChannelList extends Component {
@@ -24,9 +22,7 @@ class ChannelList extends Component {
   }
 
   onDrop(files) {
-    const parser = m3u8.createStream();
-    fileReaderStream(files[0]).pipe(parser);
-    parser.on("m3u", (m3u) => this.props.loadPlaylist(m3u));
+    this.props.loadPlaylistFromFile(files[0]);
   }
 
   renderDropzone() {
