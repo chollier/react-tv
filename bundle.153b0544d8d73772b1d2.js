@@ -40,7 +40,30 @@
 /******/ 	return __webpack_require__(0);
 /******/ })
 /************************************************************************/
-/******/ ([
+/******/ ((function(modules) {
+	// Check all modules for deduplicated modules
+	for(var i in modules) {
+		if(Object.prototype.hasOwnProperty.call(modules, i)) {
+			switch(typeof modules[i]) {
+			case "function": break;
+			case "object":
+				// Module can be created from a template
+				modules[i] = (function(_m) {
+					var args = _m.slice(1), fn = modules[_m[0]];
+					return function (a,b,c) {
+						fn.apply(this, [a,b,c].concat(args));
+					};
+				}(modules[i]));
+				break;
+			default:
+				// Module is a copy of another module
+				modules[i] = modules[modules[i]];
+				break;
+			}
+		}
+	}
+	return modules;
+}([
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -27369,40 +27392,7 @@
 
 /***/ },
 /* 183 */
-/***/ function(module, exports) {
-
-	'use strict';
-	
-	exports.__esModule = true;
-	exports['default'] = isPlainObject;
-	var fnToString = function fnToString(fn) {
-	  return Function.prototype.toString.call(fn);
-	};
-	
-	/**
-	 * @param {any} obj The object to inspect.
-	 * @returns {boolean} True if the argument appears to be a plain object.
-	 */
-	
-	function isPlainObject(obj) {
-	  if (!obj || typeof obj !== 'object') {
-	    return false;
-	  }
-	
-	  var proto = typeof obj.constructor === 'function' ? Object.getPrototypeOf(obj) : Object.prototype;
-	
-	  if (proto === null) {
-	    return true;
-	  }
-	
-	  var constructor = proto.constructor;
-	
-	  return typeof constructor === 'function' && constructor instanceof constructor && fnToString(constructor) === fnToString(Object);
-	}
-	
-	module.exports = exports['default'];
-
-/***/ },
+127,
 /* 184 */
 /***/ function(module, exports) {
 
@@ -35969,10 +35959,6 @@
 
 /***/ },
 /* 258 */
-/***/ function(module, exports) {
-
-	/* (ignored) */
-
-/***/ }
-/******/ ]);
-//# sourceMappingURL=bundle.1269514735e6d73f19ff.js.map
+257
+/******/ ])));
+//# sourceMappingURL=bundle.153b0544d8d73772b1d2.js.map
