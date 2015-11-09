@@ -10,7 +10,7 @@ let config = {
   debug: true,
   failOnError:  true,
 
-  entry: [ "./src/App.js"],
+  entry: [ "./src/app.js"],
 
   output: {
     path: path.join(__dirname, "dist"),

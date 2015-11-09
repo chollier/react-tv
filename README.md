@@ -7,6 +7,8 @@ Works best with Safari.
 
 ## Developing and Running
 
+### Developing
+
 ```
 npm install
 npm start
@@ -14,3 +16,10 @@ npm start
 
 Then browse `http://localhost:8091`.
 
+### Building
+
+```
+npm run build
+```
+
+Will output the bundled files in `./dist/`.
