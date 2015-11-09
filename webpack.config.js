@@ -55,6 +55,7 @@ if (process.env.NODE_ENV === "production") {
     }),
     new webpack.optimize.DedupePlugin()
   );
+  config.output.publicPath = "/react-tv/"; // because we are hosting on http://chollier.github.io/react-tv
 }
 
 module.exports = config;
