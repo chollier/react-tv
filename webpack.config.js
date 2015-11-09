@@ -48,12 +48,8 @@ let config = {
 
 if (process.env.NODE_ENV === "production") {
   config.plugins.push(
-    new webpack.optimize.UglifyJsPlugin({
-      compressor: {
-        warnings: false
-      }
-    }),
-    new webpack.optimize.DedupePlugin()
+    new webpack.optimize.DedupePlugin(),
+    new webpack.optimize.OccurenceOrderPlugin()
   );
   config.output.publicPath = "/react-tv/"; // because we are hosting on http://chollier.github.io/react-tv
 }
