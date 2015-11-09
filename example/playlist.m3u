@@ -1,0 +1,7 @@
+#EXTM3U
+#EXTINF:0,TED
+http://hls.ted.com/talks/1.m3u8
+#EXTINF:0,Vevo (live)
+http://vevoplaylist-live.hls.adaptive.level3.net/vevo/ch1/appleman.m3u8
+#EXTINF:0,Skate
+http://sample.vodobox.net/skate_phantom_flex_4k/skate_phantom_flex_4k.m3u8
