@@ -19,6 +19,7 @@ export default class App extends Component {
 
 const styles = {
   base: {
-    display: "flex"
+    display: "flex",
+    height: "100%"
   }
 }

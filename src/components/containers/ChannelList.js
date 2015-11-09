@@ -11,7 +11,7 @@ class ChannelList extends Component {
 
   static propTypes = {
     channels: PropTypes.instanceOf(List).isRequired,
-    loadPlaylist: PropTypes.func.isRequired,
+    loadPlaylistFromFile: PropTypes.func.isRequired,
     selectChannel: PropTypes.func.isRequired
   }
 
@@ -27,8 +27,12 @@ class ChannelList extends Component {
 
   renderDropzone() {
     return (
-      <Dropzone onDrop={this.onDrop} multiple={false}>
-        <div>Drop a playlist here</div>
+      <Dropzone
+        multiple={false}
+        onDrop={this.onDrop}
+        style={styles.dropzone}
+      >
+      <p style={styles.text}>Drop a playlist or click here<br />to load channels.</p>
       </Dropzone>
     );
   }
@@ -60,9 +64,22 @@ class ChannelList extends Component {
 const styles = {
   base: {
     // flexGrow: 1
+    display: "flex"
   },
   list: {
     // display: "flex"
+  },
+  dropzone: {
+    display: "flex",
+    alignItems: "center",
+    padding: 10,
+    borderWidth: 2,
+    borderColor: "#666",
+    borderStyle: "dashed",
+    borderRadius: 5,
+  },
+  text: {
+    textAlign: "center"
   }
 }
 
