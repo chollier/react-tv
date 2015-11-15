@@ -10,6 +10,7 @@ render(
   <Provider store={store}>
     <Router history={createBrowserHistory()}>
       <Route path="/" component={App} />
+      <Route path="/react-tv/" component={App} />
     </Router>
   </Provider> ,
   document.getElementById("root")
