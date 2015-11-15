@@ -1,10 +1,23 @@
-import React, { Component } from "react";
+import React, { Component, PropTypes } from "react";
 import Radium from "radium";
 import ChannelList from "./containers/ChannelList";
 import Viewer from "./containers/Viewer";
+import { connect } from "react-redux";
+import { downloadPlaylist } from "../actions/channelActions";
 
 @Radium
-export default class App extends Component {
+class App extends Component {
+
+  static propTypes = {
+    location: PropTypes.object.isRequired,
+    dispatch: PropTypes.func.isRequired
+  }
+
+  componentWillMount() {
+    if (this.props.location.query.playlist) {
+      this.props.dispatch(downloadPlaylist(this.props.location.query.playlist));
+    }
+  }
 
   render() {
     return (
@@ -16,6 +29,8 @@ export default class App extends Component {
   }
 
 }
+
+export default connect()(App);
 
 const styles = {
   base: {

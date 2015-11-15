@@ -1,10 +1,10 @@
 import Immutable, { List } from "immutable";
 import {
-  PLAYLIST_LOADED_FROM_FILE
+  PLAYLIST_M3U_DECODED
 } from "../constants/actionTypes";
 
 export default function(state = new List(), action) {
-  if (action.type === PLAYLIST_LOADED_FROM_FILE) {
+  if (action.type === PLAYLIST_M3U_DECODED) {
     return Immutable.fromJS(action.playlist.items.PlaylistItem.map(
       (item) => {
         const { title, uri } = item.properties;
