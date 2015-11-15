@@ -35,6 +35,9 @@ let config = {
         NODE_ENV: JSON.stringify(process.env.NODE_ENV)
       }
     }),
+    new webpack.ProvidePlugin({
+      "fetch": "imports?this=>global!exports?global.fetch!whatwg-fetch"
+    }),
     // new ExtractTextPlugin("styles.[hash].css"),
     new HtmlWebpackPlugin({
       title: "React TV",
