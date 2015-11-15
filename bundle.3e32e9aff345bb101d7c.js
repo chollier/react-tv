@@ -26296,7 +26296,8 @@
 	  _react2["default"].createElement(
 	    _reactRouter.Router,
 	    { history: (0, _historyLibCreateBrowserHistory2["default"])() },
-	    _react2["default"].createElement(_reactRouter.Route, { path: "/", component: _componentsApp2["default"] })
+	    _react2["default"].createElement(_reactRouter.Route, { path: "/", component: _componentsApp2["default"] }),
+	    _react2["default"].createElement(_reactRouter.Route, { path: "/react-tv/", component: _componentsApp2["default"] })
 	  )
 	), document.getElementById("root"));
 
@@ -40918,4 +40919,4 @@
 /* 307 */
 306
 /******/ ])));
-//# sourceMappingURL=bundle.cf2e3f6f55c4ea114dfe.js.map
+//# sourceMappingURL=bundle.3e32e9aff345bb101d7c.js.map
