@@ -10,10 +10,9 @@ export default class Channel extends Component {
 
   constructor(props) {
     super(props);
-    this.onClick = this.onClick.bind(this)
   }
 
-  onClick() {
+  onClick = () => {
     this.props.selectChannel(this.props.channel);
   }
 

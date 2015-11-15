@@ -17,11 +17,9 @@ class ChannelList extends Component {
 
   constructor(props) {
     super(props);
-    this.onDrop = this.onDrop.bind(this);
-    this.renderChannels = this.renderChannels.bind(this);
   }
 
-  onDrop(files) {
+  onDrop = (files) => {
     this.props.loadPlaylistFromFile(files[0]);
   }
 
@@ -37,7 +35,7 @@ class ChannelList extends Component {
     );
   }
 
-  renderChannels() {
+  renderChannels = () => {
     return (
       <ul style={styles.list}>{
         this.props.channels.map(

@@ -1,9 +1,14 @@
-import React, { Component } from "react";
+import React, { Component, PropTypes } from "react";
+import { Map } from "immutable";
 import Radium from "radium";
 import { connect } from "react-redux";
 
 @Radium
 class Viewer extends Component {
+
+  static propTypes = {
+    ui: PropTypes.instanceOf(Map)
+  }
 
   componentDidUpdate(prevProps) {
     if (prevProps.ui.get("selected")) {
@@ -23,7 +28,7 @@ class Viewer extends Component {
 
     } else {
       return <div style={styles.base}>Hello, this is your new TV</div>;
-  }
+    }
   }
 
 }
